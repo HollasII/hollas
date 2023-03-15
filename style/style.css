@@ -253,17 +253,5 @@ body .container .right .image div {
     background: #007785;
     color: #FFA500;
   }
-  body .container .right {
-    width: 100%;
-  }
-  body .container .right .desktop .hamburger-menu {
-    display: block;
-  }
-  body .container .right .desktop .sidebar {
-    display: none;
-  }
-  body .container .right .desktop.active .sidebar {
-    display: flex;
-  }
 }
 /* Close icon styles *//*# sourceMappingURL=style.css.map */
