@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'mixins';
+
 
 *{
   box-sizing: border-box;
@@ -20,7 +22,6 @@ body {
     align-items: center;
     justify-content: center;
     color: #F5F5F5;
-    // width: 100%;
 
     .left {
       background-color: #41a179;
@@ -30,11 +31,15 @@ body {
       flex-direction: column;
       align-items: flex-start;
       padding: 40px;
+      
+      
 
-      header{
+      .desktop{
         display: flex;
         align-items: center;
         justify-content: center;
+
+        
         
         a{
           font-family: map-get($fonts , main );
@@ -131,13 +136,15 @@ body {
       align-items: flex-start;
       padding: 40px;
 
-      header{
+      .desktop{
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
+        
+        @include ham();
 
-        nav{
+        .sidebar{
           display: flex;
           align-items: center;
           justify-content: center;
@@ -214,64 +221,113 @@ body {
   }
 }
 
+@media only screen and (min-width: 372px) and (max-width: 768px) {
+  body{
+    width: 100%;
 
-
-
-
-
-@media only screen and (max-width: 768px) {
-  body {
     .container {
-      flex-direction: column;
+      width: 100%;
+      flex-direction: column-reverse;
 
-      .left {
+      .left{
         width: 100%;
-        padding: 20px;
+        .desktop{
+          // flex-direction: column;
+          display: none;
+          
+        }
 
-        .holder {
-          padding: 20px;
-          gap: 20px;
+        .holder{
+          padding: 15px;
+          gap: 10px;
+          color: map-get($map: $colors, $key: colT);
+          font-family: map-get($map: $colors, $key: sec);
+          font-style: normal;
 
-          span {
-            h2 {
-              font-size: 28px;
-              line-height: 34px;
+          span{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 8px;
+            padding-top: 10px;
+            
+  
+            h2{
+              font-weight: 700;
+              font-size: 24px;
+              line-height: 29px;
+              color: map-get($map: $colors, $key: subTitG2);
             }
-
-            h1 {
-              font-size: 40px;
-              line-height: 49px;
+  
+            h1{
+              font-weight: 800;
+              font-size: 26px;
+              line-height: 30px;
+              text-transform: capitalize;
+              color: map-get($map: $colors, $key: mTitG);
             }
-
-            p {
+  
+            p{
+              font-weight: 500;
               font-size: 18px;
-              line-height: 22px;
+              line-height: 16px;
+              text-transform: capitalize;
             }
           }
 
-          p {
-            font-size: 18px;
-            line-height: 20px;
+          p{
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 18px;
           }
-
-          a {
-            font-size: 24px;
-            line-height: 30px;
+  
+          a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background: map-get($map: $colors, $key: linkG);
+            color: map-get($map: $colors, $key: linkTG);
+            border-radius: 10px;
+            font-family: map-get($map: $colors, $key: main);
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 34px;
+            text-transform: capitalize;
+            cursor: pointer;
+  
+            &:hover{
+              background: map-get($map: $colors, $key: linkHG);
+              color: map-get($map: $colors, $key: linkHTG);
+            }
           }
         }
       }
+  
+      .right{
+        width: 100%;     
+        
+        .desktop {
+      .hamburger-menu {
+        display: block;
+      }
 
-      .right {
-        width: 100%;
-        padding: 20px;
+      .sidebar {
+        display: none;
+      }
 
-        .image {
-          margin-top: 10px;
-          padding: 20px;
-          background-position: 50% 40%;
-          background-size: 50%;
+      &.active {
+        .sidebar {
+          display: flex;
         }
       }
     }
+      }
+    }
   }
+   
 }
+
+/* Close icon styles */
